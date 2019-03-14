@@ -5,3 +5,5 @@ Pillow==5.4.1
 python-decouple==3.1
 pytz==2018.9
 static3==0.7.0
+bootstrapform
+
