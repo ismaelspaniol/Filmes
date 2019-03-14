@@ -1,25 +1,49 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{% url 'logout' %}"> Sair</a>
-    <ul>
-        {% for person in persons %}
+{% extends 'base.html' %}
 
-        <li>
-            <a href="{% url 'persons_update' person.id %}"> {{ person.first_name }}</a>
-            <a href="{% url 'persons_delete' person.id %}"> Deletar</a>
-        </li>
+{% block title %} Administacao {% endblock%}
 
-        {% endfor %}
-    </ul>
-    <br />
-    <a href="{% url 'persons_new' %}"> Novo cliente</a>
-</body>
-</html>
+{%block main %}
+    <div class="row">
+        <div class="col">
+
+        </div>
+
+        <div class="col-6">
+             <h3>Listagem de Clientes</h3>
+            <ul class="list-group">
+                {% for person in persons %}
+                    <li class="list-group-item">
+                        <a href="{% url 'persons_update' person.id %}"> {{ person.first_name }}</a>
+                        <a href="{% url 'persons_delete' person.id %}" class="trash-item">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <br />
+            <a href="{% url 'persons_new' %}" class="btn btn-primary"> Novo cliente</a>
+        </div>
+
+        <div class="col">
+            {% if user.is_authenticated %}
+                <p>Ola {{user.username}}
+                    <a href="{% url 'logout' %}" >
+                        <span class="badge badge-dark">Sair</span>
+                    </a>
+                </p>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Desenvolvimento web django 2.x</p>
+      </div>
+    </footer>
+{% endblock %}
+
+
+

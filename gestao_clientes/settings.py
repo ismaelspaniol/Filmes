@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['gestao-clientes3550.herokuapp.com']
+ALLOWED_HOSTS = ['gestao-clientes3550.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
     'clientes',
     'home',
+
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,7 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'persons_list'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    'statics',
+]

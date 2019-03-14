@@ -1,19 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load bootstrap %}
 
+
+{% block title %} Seja bem vindo {% endblock%}
+
+{%block main %}
+    <h3>Novo Cliente</h3>
     <form  method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit">Salvar </button>
+        {{ form|bootstrap }}
+        <button type="submit" class="btn btn-primary" >Salvar </button>
 
     </form>
-</body>
-</html>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Desenvolvimento web django 2.x</p>
+      </div>
+    </footer>
+{% endblock %}
