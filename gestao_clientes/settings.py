@@ -80,7 +80,10 @@ WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+# ///para usar o sqlite3, quando estiver trabalhando local
+# default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+default_dburl = 'postgres://postgres:masterkey@localhost:5432/gestao_clientes'
 
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
