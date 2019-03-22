@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 # }
 
 default_dburl = 'postgres://postgres:masterkey@localhost:5433/sincroniza_rh'
-
+#db heroku  d1b1lk04m60jga
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=parse),
 }
