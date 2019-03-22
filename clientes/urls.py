@@ -1,10 +1,11 @@
-
 from django.urls import path
 from .views import persons_list
 from .views import persons_new
 from .views import persons_update
 from .views import persons_delete
 
+
+app_name='clientes'
 
 urlpatterns = [
     path('list/', persons_list, name="persons_list"),

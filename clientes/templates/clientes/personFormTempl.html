@@ -3,8 +3,11 @@
 
 
 {% block title %} Seja bem vindo {% endblock%}
-
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
 {%block main %}
+
     <h3>Novo Cliente</h3>
     <form  method="POST" enctype="multipart/form-data">
         {% csrf_token %}

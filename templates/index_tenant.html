@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+    {% block script %}
+          <script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#minhaTabela').dataTable();
+			} );
+	</script>
+    {% endblock %}
+
+
+
+    {% block main %}
+        Lista de Tenants(Empresas):
+        {% if request.tenant %}
+            <a href="http://{{ request.tenant.get_primary_domain.domain }}:8000">{{ request.tenant.name }}</a>
+            <code>{{ request.tenant.schema_name }}</code>, <code>{{ request.tenant.get_primary_domain.domain }}</code>).
+        {% endif %}
+        {% for tenant in tenants_list %}
+         <div class="row">
+                <div class="col">&middot; <a href="http://{{ tenant.get_primary_domain.domain }}:8000">{{ tenant.name }}</a></div>
+         </div>
+        {% endfor %}
+
+        <br />
+        Links Úteis:
+        <div class="row">
+            <div class="col"><a href="https://github.com/tomturner/django-tenants">GitHub-django-tenants</a> <br /></a></div>
+        </div>
+        <div class="row">
+            <div class="col"><a href="https://django-tenants.readthedocs.org/en/latest/">Documentation</a><br /></a></div>
+        </div>
+
+
+         <table id="minhaTabela">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vinicius Moura</td>
+        <td>viniciusmouramail@gmail.com</td>
+        <td>49 12345-68791</td>
+        <td><a href="">Deletar</a></td>
+      </tr>
+      <tr>
+        <td>José Andrade</td>
+        <td>joseandrade@gmail.com</td>
+        <td>32 9875-68791</td>
+        <td><a href="">Deletar</a></td>
+      </tr>
+      <tr>
+        <td>Rodrigo Costa</td>
+        <td>rodrigocosta@gmail.com</td>
+        <td>32 4564-68791</td>
+        <td><a href="">Deletar</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+    {% endblock %}
+
+
+

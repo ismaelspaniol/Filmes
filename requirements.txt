@@ -1,3 +1,11 @@
--r requirements-dev.txt
-gunicorn
-psycopg2
+dj-database-url==0.5.0
+dj-static==0.0.6
+Django==2.1.7
+django-bootstrap-form==3.4
+django-tenants==2.1.0
+Pillow==5.4.1
+psycopg2==2.7.7
+psycopg2-binary==2.7.7
+python-decouple==3.1
+pytz==2018.9
+static3==0.7.0

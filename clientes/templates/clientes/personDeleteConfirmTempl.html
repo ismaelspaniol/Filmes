@@ -2,7 +2,9 @@
 {% extends 'base.html' %}
 
 {% block title %} Confirmacao {% endblock%}
-
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
 {%block main %}
 
     <h1>Tem certeza que deseja deletar {{person.first_name}}</h1>

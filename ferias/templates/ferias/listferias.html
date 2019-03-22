@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block script %}
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function()
+{
+    $("#tabelaFerias").dataTable(
+    {
+        "bJQueryUI": true,
+        "oLanguage":
+        {
+            "sProcessing":   "Processando...",
+            "sLengthMenu":   "Mostrar _MENU_ registros",
+            "sZeroRecords":  "Não foram encontrados resultados",
+            "sInfo":         "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registros",
+            "sInfoFiltered": "",
+            "sInfoPostFix":  "",
+            "sSearch":       "Buscar:",
+            "sUrl":          "",
+            "oPaginate":
+            {
+                "sFirst":    "Primeiro",
+                "sPrevious": "Anterior",
+                "sNext":     "Seguinte",
+                "sLast":     "Último"
+            }
+        }
+    })
+} );
+</script>
+{% endblock %}
+{% block title %} Listagem De Ferias {% endblock%}
+
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
+
+{%block main %}
+<h3>Listagem de Ferias</h3>
+
+<table id="tabelaFerias">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Telefone</th>
+        <th>Telefone</th>
+        <th>Telefone</th>
+        <th>Telefone</th>
+        <th>Telefone</th>
+        <th>Telefone</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for ferias in ferias %}
+    <tr>
+        <td>{{ ferias.nome }}</td>
+        <td>{{ ferias.inicio_per_aquisitivo }}</td>
+        <td>{{ ferias.fim_per_aquisitivo }}</td>
+        <td>{{ ferias.faltas_nao_justificadas }}</td>
+        <td>{{ ferias.datalimite }}</td>
+        <td>{{ ferias.dias_direito }}</td>
+        <td>{{ ferias.dias_saldo }}</td>
+        <td>{{ ferias.dias_com_deducao_faltas }}</td>
+        <td>{{ ferias.dias_saldo_v2 }}</td>
+
+
+
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}
+
+{% block footer %}
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Desenvolvimento web django 2.x</p>
+    </div>
+</footer>
+{% endblock %}

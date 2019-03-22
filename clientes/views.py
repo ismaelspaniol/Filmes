@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Person
-from .forms import PersonForm
+from clientes.models import Person
+from clientes.forms import PersonForm
+
 
 @login_required
 def persons_list(request):
     persons = Person.objects.all()
-    return render(request, 'person.html', {'persons': persons})
+    return render(request, 'clientes/person.html', {'persons': persons})
+
 
 @login_required
 def persons_new(request):
@@ -14,8 +16,9 @@ def persons_new(request):
 
     if form.is_valid():
         form.save()
-        return redirect('persons_list')
-    return render(request, 'personFormTempl.html', {'form': form})
+        return redirect('clientes:persons_list')
+    return render(request, 'clientes/personFormTempl.html', {'form': form})
+
 
 @login_required
 def persons_update(request, id):
@@ -24,9 +27,10 @@ def persons_update(request, id):
 
     if form.is_valid():
         form.save()
-        return redirect('persons_list')
+        return redirect('clientes:persons_list')
 
-    return render(request, 'personFormTempl.html', {'form': form})
+    return render(request, 'clientes/personFormTempl.html', {'form': form})
+
 
 @login_required
 def persons_delete(request, id):
@@ -35,6 +39,6 @@ def persons_delete(request, id):
 
     if request.method == 'POST':
         person.delete()
-        return redirect('persons_list')
+        return redirect('clientes:persons_list')
 
-    return render(request, 'personDeleteConfirmTempl.html', {'person': person})
+    return render(request, 'clientes/personDeleteConfirmTempl.html', {'person': person})
