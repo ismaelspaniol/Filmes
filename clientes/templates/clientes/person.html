@@ -7,7 +7,16 @@
 {% endblock %}
 
 {%block main %}
+<div class="row">
+    <div class="col-12">
+        <form action=""  class="form-inline">
+            <input type="text" name="nome" id="nome" placeholder="Digite o Nome">
+            <input type="text" name="sobrenome" id="sobrenome" placeholder="Digite o Sobrenome">
+            <button>Pesquisar</button>
+        </form>
 
+    </div>
+</div>
 
 <div class="row">
     <div class="col-6">
@@ -28,12 +37,5 @@
 </div>
 
 
-    {% endblock %}
+{% endblock %}
 
-    {% block footer %}
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">Desenvolvimento web django 2.x</p>
-        </div>
-    </footer>
-    {% endblock %}
