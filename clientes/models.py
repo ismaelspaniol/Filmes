@@ -22,7 +22,7 @@ class Person(models.Model):
     salary = models.DecimalField(max_digits=5, decimal_places=2)
     bio = models.TextField()
     photo = models.ImageField(upload_to='clients_photos', null=True, blank=True)
-    doc = models.ForeignKey(Documento,null=True, blank=True, on_delete=None)
+    doc = models.ForeignKey(Documento, null=True, blank=True, on_delete=None)
     depend = models.ManyToManyField(Dependente, null=True, blank=True)
 
     def __str__(self):

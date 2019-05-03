@@ -186,6 +186,7 @@ TENANT_APPS = (
     'pages',
     'empresa',
     'ferias',
+    'movies',
 )
 
 TENANT_MODEL = "customers.Client"  # app.Model
@@ -235,3 +236,4 @@ DATE_FORMAT = 'd/m/Y'
 DATE_INPUT_FORMATS = (
     '%d/%m/%Y',
 )
+

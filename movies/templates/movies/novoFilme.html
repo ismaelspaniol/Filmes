@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+
+{% block script %}
+
+<script>
+
+    function vidplay() {
+       var video = document.getElementById("Video1");
+       var button = document.getElementById("play");
+       if (video.paused) {
+          video.play();
+          button.textContent = "||";
+       } else {
+          video.pause();
+          button.textContent = ">";
+       }
+    }
+
+    function restart() {
+        var video = document.getElementById("Video1");
+        video.currentTime = 0;
+    }
+
+    function skip(value) {
+        var video = document.getElementById("Video1");
+        video.currentTime += value;
+    }
+
+    $(document).ready(function(){
+       var segundos = 30;
+       document.getElementById("buttonbar").innerHTML = '<button id="restart" onclick="restart();">restart</button>\n<button id="rew" onclick="skip(-'+segundos+')">-'+segundos+'</button>\n<button id="play" onclick="vidplay()">></button>\n<button id="fastFwd" onclick="skip(+'+segundos+')">+'+segundos+'</button>';
+
+    });
+
+</script>
+
+{% endblock %}
+
+
+{% block title %} Seja bem vindo {% endblock%}
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
+{%block main %}
+
+<h3>Novo Filme</h3>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|bootstrap }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+
+</form>
+{% if filme_file != '' %}
+<br><br>
+<video id="Video1" width='400' controls="controls">
+    <source src='{{ MEDIA_URL }}{{ filme_file }}' type='video/mp4'>
+    <source src='{{ MEDIA_URL }}{{ filme_file }}' type='video/ogg; codecs="theora, vorbis"'>
+    <source src='{{ MEDIA_URL }}{{ filme_file }}' type=type='video/webm'>
+    <source src='{{ MEDIA_URL }}{{ filme_file }}' type='video/x-matroska; codecs="theora, vorbis"'>
+    Your browser does not support the video tag.
+</video>
+<br><br>
+<div id="buttonbar">
+</div>
+
+{% endif %}
+
+{% endblock %}
+
