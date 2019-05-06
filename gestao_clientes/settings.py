@@ -187,6 +187,7 @@ TENANT_APPS = (
     'empresa',
     'ferias',
     'movies',
+    'musicas',
 )
 
 TENANT_MODEL = "customers.Client"  # app.Model

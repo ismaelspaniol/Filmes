@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} Administacao {% endblock%}
+
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
+
+{%block main %}
+
+
+<div class="row">
+    <div class="col-6">
+        <h3>Listagem de Musicas</h3>
+        <ul class="list-group">
+            {% for musica in musicas %}
+            <li class="list-group-item">
+
+                <a href="{% url 'musicas:musicas_update' musica.id %}"> {{ musica.nome }}</a>
+                <a href="{% url 'musicas:musicas_update' musica.id %}"> Editar</a>
+                <a href="{% url 'musicas:musicas_delete' musica.id %}" class="trash-item">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <br/>
+        <a href="{% url 'musicas:musica_new' %}" class="btn btn-primary"> Novo cliente</a>
+
+        <br><br>
+
+        <audio controls>
+            <source src="{{ MEDIA_URL }}{{ musica_file }}" type="audio/ogg">
+            <source src="{{ MEDIA_URL }}{{ musica_file }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <br><br>
+
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

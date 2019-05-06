@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+
+{% block script %}
+
+
+{% endblock %}
+
+
+{% block title %} Seja bem vindo {% endblock%}
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
+{%block main %}
+
+<h3>Novo Filme</h3>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|bootstrap }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+
+</form>
+{% if musica_file != '' %}
+<br><br>
+
+<audio controls>
+  <source src="{{ MEDIA_URL }}{{ musica_file }}" type="audio/ogg">
+ <source src="{{ MEDIA_URL }}{{ musica_file }}" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<br><br>
+
+{% endif %}
+
+{% endblock %}
+

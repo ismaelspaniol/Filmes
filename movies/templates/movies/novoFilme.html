@@ -54,7 +54,7 @@
 </form>
 {% if filme_file != '' %}
 <br><br>
-<video id="Video1" width='400' controls="controls">
+<video id="Video1" width='300' controls="controls">
     <source src='{{ MEDIA_URL }}{{ filme_file }}' type='video/mp4'>
     <source src='{{ MEDIA_URL }}{{ filme_file }}' type='video/ogg; codecs="theora, vorbis"'>
     <source src='{{ MEDIA_URL }}{{ filme_file }}' type=type='video/webm'>
@@ -64,7 +64,7 @@
 <br><br>
 <div id="buttonbar">
 </div>
-
+python manage.py startapp musicas
 {% endif %}
 
 {% endblock %}
